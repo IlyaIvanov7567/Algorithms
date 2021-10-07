@@ -3,7 +3,7 @@
 // Асимптотическую сложность O(f(N) × g(N) × h(3N)) = O(f(N) × g(N) × h(N)) = 
 // = O(f(N^3)) = O(f(inputArray.Length^3))
 
-public static int StrangeSum(int[] inputArray)
+ int StrangeSum(int[] inputArray)
 {
     int sum = 0;
     for (int i = 0; i < inputArray.Length; i++)             // O(f(N))
