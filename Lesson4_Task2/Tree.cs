@@ -109,7 +109,7 @@ namespace Lesson4_Task2
             {
                 if (curNode == null)
                 {
-                    throw new Exception("Дерево не посажено");
+                    throw new Exception($"Не найден узел со значением {value}");
                 }
                 else if (curNode.Value == value)
                 {
@@ -134,7 +134,29 @@ namespace Lesson4_Task2
             TreeNode parent = GetParent(value);
             TreeNode removeNode = GetNodeByValue(value);
 
-            if (removeNode.RightChild == null && removeNode.LeftChild == null) // удаление листьев
+            if (rootNode.Value == value) // удаление корня
+            {
+                TreeNode replacenNode = removeNode.RightChild;
+                
+                while (replacenNode.LeftChild != null)
+                {
+                    replacenNode = replacenNode.LeftChild;
+                }
+                
+                replacenNode.RightChild = rootNode.RightChild;
+               
+                replacenNode.LeftChild = rootNode.LeftChild;
+                
+                GetParent(replacenNode.Value).LeftChild = null;
+                
+                rootNode.LeftChild = null;
+                
+                rootNode.RightChild = null;
+                
+                rootNode = replacenNode;
+            }
+
+            else if (removeNode.RightChild == null && removeNode.LeftChild == null) // удаление листьев
             {
                 if (parent.Value > value)
                 {
@@ -145,7 +167,7 @@ namespace Lesson4_Task2
                     parent.RightChild = null;
                 }
             }
-            else if (removeNode.RightChild == null && removeNode.LeftChild != null) // удаление узла имеющего только левого потомка
+            else if (removeNode.RightChild == null) // удаление узла имеющего только левого потомка
             {
                 if (parent.Value > value)
                 {
@@ -156,7 +178,7 @@ namespace Lesson4_Task2
                     parent.RightChild = removeNode.LeftChild;
                 }
             }
-            else if (removeNode.LeftChild == null && removeNode.RightChild == null) // удаление узла имеющего только правого потомка
+            else if (removeNode.LeftChild == null) // удаление узла имеющего только правого потомка
             {
                 if (parent.Value > value)
                 {
@@ -167,9 +189,31 @@ namespace Lesson4_Task2
                     parent.RightChild = removeNode.RightChild;
                 }
             }
-            else // удаление узла имеющего обоих потомков (в т.ч. корня дерева)
+            else // удаление узла имеющего обоих потомков
             {
 
+                TreeNode replacenNode = removeNode.RightChild;
+
+                while (replacenNode.LeftChild != null)
+                {
+                    replacenNode = replacenNode.LeftChild;
+                }
+
+                replacenNode.RightChild = removeNode.RightChild;
+                
+                replacenNode.LeftChild = removeNode.LeftChild;
+               
+                GetParent(replacenNode.Value).LeftChild = null;
+
+                if (parent.Value > value)
+                {
+                    parent.LeftChild = replacenNode;
+
+                }
+                else
+                {
+                    parent.RightChild = replacenNode;
+                }
             }
         }
     }
