@@ -100,7 +100,6 @@ namespace Lesson4_Task2
                 PrintTree(node.RightChild, x + offset, y + 1, offset / 2);
             }
         }
-
         public TreeNode GetParent(int value)
         {
             TreeNode parent = null;
@@ -130,11 +129,48 @@ namespace Lesson4_Task2
             while (!got);
             return parent;
         }
+        public void Removeitem(int value) // удалить узел по значению
+        {
+            TreeNode parent = GetParent(value);
+            TreeNode removeNode = GetNodeByValue(value);
 
+            if (removeNode.RightChild == null && removeNode.LeftChild == null) // удаление листьев
+            {
+                if (parent.Value > value)
+                {
+                    parent.LeftChild = null;
+                }
+                else
+                {
+                    parent.RightChild = null;
+                }
+            }
+            else if (removeNode.RightChild == null && removeNode.LeftChild != null) // удаление узла имеющего только левого потомка
+            {
+                if (parent.Value > value)
+                {
+                    parent.LeftChild = removeNode.LeftChild;
+                }
+                else
+                {
+                    parent.RightChild = removeNode.LeftChild;
+                }
+            }
+            else if (removeNode.LeftChild == null && removeNode.RightChild == null) // удаление узла имеющего только правого потомка
+            {
+                if (parent.Value > value)
+                {
+                    parent.LeftChild = removeNode.RightChild;
+                }
+                else
+                {
+                    parent.RightChild = removeNode.RightChild;
+                }
+            }
+            else // удаление узла имеющего обоих потомков (в т.ч. корня дерева)
+            {
 
-        //public void Removeitem(int value) // удалить узел по значению
-        //{
-
-        //}
+            }
+        }
     }
 }

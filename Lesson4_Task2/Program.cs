@@ -19,7 +19,7 @@ namespace Lesson4_Task2
 
             Console.WriteLine(tree.GetParent(10).Value);
 
-            //tree.PrintTree(tree.rootNode, 20, 0);
+            tree.PrintTree(tree.rootNode, 20, 0);
             
             Console.ReadKey();
         }
