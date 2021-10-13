@@ -17,7 +17,9 @@ namespace Lesson4_Task2
             tree.AddItem(7);
             tree.AddItem(13);
 
-            tree.PrintTree(tree.rootNode, 20, 0);
+            Console.WriteLine(tree.GetParent(10).Value);
+
+            //tree.PrintTree(tree.rootNode, 20, 0);
             
             Console.ReadKey();
         }

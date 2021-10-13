@@ -101,15 +101,40 @@ namespace Lesson4_Task2
             }
         }
 
-        //public void RemoveItem(int value) // удалить узел по значению
-        //{
-        //    if (rootNode == null)
-        //        throw new Exception("Дерево не посажено");
-        //    TreeNode delNode = GetNodeByValue(value);
-        //    if (delNode.LeftChild == null && delNode.RightChild == null)
-        //    {
+        public TreeNode GetParent(int value)
+        {
+            TreeNode parent = null;
+            TreeNode curNode = rootNode;
+            bool got = false;
+            do
+            {
+                if (curNode == null)
+                {
+                    throw new Exception("Дерево не посажено");
+                }
+                else if (curNode.Value == value)
+                {
+                    got = true;
+                }
+                else if (curNode.Value > value)
+                {
+                    parent = curNode;
+                    curNode = curNode.LeftChild;
+                }
+                else if (curNode.Value < value)
+                {
+                    parent = curNode;
+                    curNode = curNode.RightChild;
+                }
+            }
+            while (!got);
+            return parent;
+        }
 
-        //    }
+
+        //public void Removeitem(int value) // удалить узел по значению
+        //{
+
         //}
     }
 }
