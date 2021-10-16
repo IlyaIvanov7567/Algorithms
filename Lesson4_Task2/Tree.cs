@@ -192,27 +192,27 @@ namespace Lesson4_Task2
             else // удаление узла имеющего обоих потомков
             {
 
-                TreeNode replacenNode = removeNode.RightChild;
+                TreeNode replaceNode = removeNode.RightChild;
 
-                while (replacenNode.LeftChild != null)
+                while (replaceNode.LeftChild != null)
                 {
-                    replacenNode = replacenNode.LeftChild;
+                    replaceNode = replaceNode.LeftChild;
                 }
 
-                replacenNode.RightChild = removeNode.RightChild;
+                replaceNode.RightChild = removeNode.RightChild;
                 
-                replacenNode.LeftChild = removeNode.LeftChild;
+                replaceNode.LeftChild = removeNode.LeftChild;
                
-                GetParent(replacenNode.Value).LeftChild = null;
+                GetParent(replaceNode.Value).LeftChild = null;
 
                 if (parent.Value > value)
                 {
-                    parent.LeftChild = replacenNode;
+                    parent.LeftChild = replaceNode;
 
                 }
                 else
                 {
-                    parent.RightChild = replacenNode;
+                    parent.RightChild = replaceNode;
                 }
             }
         }
