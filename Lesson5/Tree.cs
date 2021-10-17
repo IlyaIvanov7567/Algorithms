@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,63 +8,6 @@ namespace Lesson5
 {
     class Tree
     {
-        public TreeNode rootNode { get; set; }
-        public void AddItem(int value)
-        {
-            TreeNode newNode = new TreeNode { Value = value };
-
-            TreeNode curNode = rootNode;
-
-            bool added = false;
-
-            if (curNode == null)
-            {
-                rootNode = newNode;
-                return;
-            }
-
-            do
-            {
-                if (value >= curNode.Value)
-                {
-                    if (curNode.rightChild == null)
-                    {
-                        curNode.rightChild = newNode;
-                        added = true;
-                    }
-                    else
-                    {
-                        curNode = curNode.rightChild;
-                    }
-                }
-                if (value < curNode.Value)
-                {
-                    if (curNode.leftChild == null)
-                    {
-                        curNode.leftChild = newNode;
-                        added = true;
-                    }
-                    else
-                    {
-                        curNode = curNode.leftChild;
-                    }
-                }
-            }
-            while (!added);
-        }
-        public void PrintTree(TreeNode startNode, string indent = "")
-        {
-            if (startNode != null)
-            {
-                Console.WriteLine($"{indent} - [{startNode.Value}]");
-
-                indent += new string(' ', 3);
-
-                PrintTree(startNode.leftChild, indent);
-
-                PrintTree(startNode.rightChild, indent);
-            }
-        }
         public void BFS(int value)
         {
             if (rootNode == null)
