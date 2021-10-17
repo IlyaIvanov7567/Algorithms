@@ -8,7 +8,7 @@ namespace Lesson6
 {
     class Graf
     {
-        public static void DFS(int[,] w)
+        public static void BFS(int[,] w)
         {
             Console.WriteLine("---Обход в ширину---");
             int[] visited = new int[w.GetLength(0)]; // Пройденыные вершины: 0 - не пройдена, 1 - в очереди, 2 - пройдена
@@ -52,7 +52,7 @@ namespace Lesson6
             }
             Console.WriteLine("---Обход в ширину завершен---");
         }
-        public static void BFS(int[,] w)
+        public static void DFS(int[,] w)
         {
             Console.WriteLine("---Обход в глубину---");
             int[] visited = new int[w.GetLength(0)]; // Пройденыные вершины: 0 - не пройдена, 1 - в очереди, 2 - пройдена
