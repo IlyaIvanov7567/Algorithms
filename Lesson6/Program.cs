@@ -28,6 +28,8 @@ namespace Lesson6
             }
 
             Graf.DFS(w);
+            
+            Graf.BFS(w);
 
             Console.ReadKey();
         }
